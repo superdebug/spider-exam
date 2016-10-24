@@ -7,8 +7,8 @@ from bs4 import BeautifulSoup
             body > div.main-content > ul > li:nth-child(1) > img
             body > div.main-content > ul > li:nth-child(2) > div.article-info > p.meta-info > span:nth-child(2)
 ''' 
-info = []
-with open('/python3-exam/pachong/web/new_index.html','r') as wb_data:
+info = []  #将数据统一放入列表中
+with open('./web/new_index.html','r') as wb_data:
     Soup = BeautifulSoup(wb_data,'lxml')
     # print(Soup)
     #这里注意去掉所有冒号:后面的内容
@@ -20,9 +20,6 @@ with open('/python3-exam/pachong/web/new_index.html','r') as wb_data:
     #由于标签与文章是多对一的关系，因此应该在标签的父级元素停止，而不是到子节点上
     cates = Soup.select('body > div.main-content > ul > li > div.article-info > p.meta-info')
 #    print(images,titles,descs,rates,cates,sep='\n---------------------------------------------\n')
-
-
-
 
 #利用for循环获取所有title信息 get_text方法可以获取标签中的文本信息
 #for title in titles:
@@ -44,5 +41,7 @@ for title,image,desc,rate,cate in zip(titles,images,descs,rates,cates):
     info.append(data)
 
 #检索出分数大于3的文章 
-
+for i in info:
+    if float(i['rate'])>3:
+        print(i['title'],i['cate'])
 
