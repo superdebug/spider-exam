@@ -43,6 +43,6 @@ for title,image,desc,rate,cate in zip(titles,images,descs,rates,cates):
    # print(data)
     info.append(data)
 
-#检索出分数大于3的文章 123
+#检索出分数大于3的文章 
 
 
