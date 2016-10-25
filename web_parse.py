@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+#案例 解析本地网页
 '''    
             以下内容是通过网页中的审查元素的selector获取的                  
             body > div.main-content > ul > li:nth-child(1) > div.rate > span
