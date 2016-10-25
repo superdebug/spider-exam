@@ -37,3 +37,8 @@ for title,img,cate in zip(titles,imgs,cates):
 
 '''
 
+'''
+向服务器提交伪造的cookie信息
+账号登录后在调试器中network中点击任意链接，然后在header中寻找cookie信息
+
+'''
