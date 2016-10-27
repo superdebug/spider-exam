@@ -52,7 +52,7 @@ wb_data = requests.get(url_saves,headers=headers)
 soup = BeautifulSoup(wb_data.text,'lxml')
 #titles = soup.select('location-name') #网站已经改版做了防御，这个不能用了
 titles = soup.select('#BODYCON > div.modules-saves-single-trip-view > div > div.trip_content > div.items > div > div.info > div.location_summary > div.title > a')
-images = soup.select('')
+images = soup.select('img[width="54"]')
 for title,images in zip(titles,images):
     data = {
             'title':title.get_text(),
