@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import time
-url = 'https://knewone.com/discover?page=7'
+url = 'https://knewone.com/discover?page='
 
 def get_page(url,data=None):
 
