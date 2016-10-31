@@ -10,5 +10,3 @@
 #requests (2.11.1)
 #setuptools (28.6.1)
 #wheel (0.30.0a0)
-
-# spider-exam
