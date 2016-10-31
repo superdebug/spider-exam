@@ -14,7 +14,7 @@ plain_text = source_code.text
 Soup = BeautifulSoup(plain_text)
 
 download_links = []
-floder_path = '/python3-exam/pachong/spider-exam/pics/'
+floder_path = '/python3-exam/spider-exam/pics/'
 for pic_tag in Soup.find_all('img'):
     #print(pic_tag)
     pic_link = pic_tag.get('src')
@@ -25,7 +25,3 @@ for pic_tag in Soup.find_all('img'):
 for item in download_links:
     urllib.request.urlretrieve(item,floder_path+item[-10:]) #下载图片，并将下载图片重新命名，命名规则是截取后10个字符串
     print('Done')
-
-
-
-
