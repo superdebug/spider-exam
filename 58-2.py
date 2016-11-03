@@ -3,8 +3,8 @@ import requests
 
 url='http://zhuanzhuan.58.com/detail/764814909242654724z.shtml'
 
-def get_item_info(url):
-    wb_data=requests.get(url)
+def get_item_info(who_sells):
+    wb_data=requests.get(who_sells)
     soup = BeautifulSoup(wb_data.text,'lxml')
     #imgs = soup.select('div.infocon > tiable > tbody > tr > td.img > a > img')
     title = soup.title.text  #这里的标题没有用selector方法，而是直接获取网页标题
