@@ -1,0 +1,2 @@
+vncserver & #启动vnc
+/usr/local/mongodb/bin/mongod -config /usr/local/mongodb/bin/mongodb.conf  #启动mongodb
