@@ -23,5 +23,5 @@ data = {
     'area':list(area[0].stripped_strings)
 }        
 print(data)
-
+print('complete!')
 
