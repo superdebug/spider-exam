@@ -7,7 +7,7 @@ import pymongo
 client = pymongo.MongoClient('localhost',27017)
 ceshi = client['ceshi'] #在ceshi数据库中下写入数据
 url_list = ceshi['url_list3']
-
+item_info = ceshi['item_info3']
 #spider 1 爬取选定频道下所有商品的链接
 def get_links_from(channel,pages,who_sells=0): #默认0表示个人
     #http://bj.58.com/diannao/1/pn2/
@@ -25,4 +25,17 @@ def get_links_from(channel,pages,who_sells=0): #默认0表示个人
     else:
         pass
         #Nothing
-get_links_from('http://bj.58.com/shuma/',1)
+
+def get_item_info(url):
+    wb_data = requests.get(url)
+    soup = BeautifulSoup(wb_data.text,'lxml')
+    title=soup.title.text
+    price =soup.select('div.price_li > span > i')[0].text
+    #date = soup.select('look_time')[0].text
+    #tag名称和属性的查找 soup.find_all('div','palce_li') 用于定位 <div class="palce_li">
+    area = list(soup.select('div.palce_li > span > i')[0].stripped_strings) if soup.find_all('div','palce_li') else None
+    #item_info.insert_one({'title':title,'price':price,'date':date,'area':area})
+    print(area)
+
+get_item_info("http://zhuanzhuan.58.com/detail/784993594887569412z.shtml")
+#get_links_from('http://bj.58.com/shuma/',1)
