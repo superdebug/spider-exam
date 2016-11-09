@@ -6,7 +6,7 @@ url_host = "http://bj.58.com"
 
 #获取二手栏目
 def get_channel_urls(url):
-    wb_data = requests.get(start_url)
+    wb_data = requests.get(url)
     soup = BeautifulSoup(wb_data.text,'lxml')
     links = soup.select('ul.ym-submnu > li > b > a')
     for link in links:
