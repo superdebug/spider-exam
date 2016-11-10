@@ -25,17 +25,26 @@ def get_links_from(channel,pages,who_sells=0): #默认0表示个人
     else:
         pass
         #Nothing
-
+#
 def get_item_info(url):
     wb_data = requests.get(url)
     soup = BeautifulSoup(wb_data.text,'lxml')
-    title=soup.title.text
-    price =soup.select('div.price_li > span > i')[0].text
-    #date = soup.select('look_time')[0].text
-    #tag名称和属性的查找 soup.find_all('div','palce_li') 用于定位 <div class="palce_li">
-    area = list(soup.select('div.palce_li > span > i')[0].stripped_strings) if soup.find_all('div','palce_li') else None
-    #item_info.insert_one({'title':title,'price':price,'date':date,'area':area})
-    print(area)
+    htmlsrc=str(soup) #将soup转换为字符串类型
+    no_longer_exist ='topbar404.js' in htmlsrc #判断网页中是否包含topbar404.js (topbar404.js是404页面源代码中的特殊字符
+    if no_longer_exist:
+        pass
+    else:
+        title=soup.title.text
+        price =soup.select('div.price_li > span > i')[0].text
+        look_time = soup.select('p > span.look_time')[0].text #浏览次数
+        #tag名称和属性的查找 soup.find_all('div','palce_li') 用于定位 <div class="palce_li">
+        area = list(soup.select('div.palce_li > span > i')[0].stripped_strings) if soup.find_all('div','palce_li') else None
+        #item_info.insert_one({'title':title,'price':price,'look_time':look_time,'area':area})
+        print({'title':title,'price':price,'look_time':look_time,'area':area})
 
-get_item_info("http://zhuanzhuan.58.com/detail/784993594887569412z.shtml")
+get_item_info('http://zhuanzhuan.58.com/detail/784993594887569412z.shtml') #no 404 page
+#get_item_info('http://bj.58.com/shouji/24605954621114x.shtml') #404 page
 #get_links_from('http://bj.58.com/shuma/',1)
+
+
+
