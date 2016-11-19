@@ -17,9 +17,9 @@ headers  = {
 
 # http://cn-proxy.com/
 proxy_list = [
-    'http://117.177.250.151:8081',
-    'http://111.85.219.250:3129',
-    'http://122.70.183.138:8118',
+    'http://122.70.141.42:80',
+    'http://60.31.194.8:8888',
+    'http://222.175.99.117:8090',
     ]
 proxy_ip = random.choice(proxy_list) # 随机获取代理ip
 proxies = {'http': proxy_ip}
@@ -46,7 +46,7 @@ def get_links_from(channel, pages, who_sells='o'):
 # spider 2
 def get_item_info_from(url,data=None):
     wb_data = requests.get(url,headers=headers)
-    if wb_data.status_code == 404:
+    if wb_data.status_code == 404:  #如果返回码是404的话  网络调试 network->doc status
         pass
     else:
         soup = BeautifulSoup(wb_data.text, 'lxml')
@@ -61,4 +61,4 @@ def get_item_info_from(url,data=None):
         print(data)
         # item_info.insert_one(data)
 
-get_item_info_from('http://bj.ganji.com/ershoubijibendiannao/1927955773x.htm')
+#get_item_info_from('http://bj.ganji.com/ershoubijibendiannao/1927955773x.htm')

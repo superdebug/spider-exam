@@ -8,15 +8,17 @@ x = set(db_urls)
 y = set(index_urls)
 rest_of_urls = x-y
 
-# def get_all_links_from(channel):
-#     for i in range(1,100):
-#         get_links_from(channel,i)
+def get_all_links_from(channel):
+    for i in range(1,100):
+        get_links_from(channel,i)
 
+rest_of_urls
 
 if __name__ == '__main__':
-    pool = Pool(processes=6)
+    pool = Pool(processes=1)
     # pool = Pool()
-    pool.map(get_all_links_from,channel_list.split())
+    #pool.map(get_all_links_from,channel_list.split())
+    pool.map(get_item_info_from,rest_of_urls)
     pool.close()
     pool.join()
 
