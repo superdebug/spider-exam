@@ -50,6 +50,7 @@ def get_links_from(channel, pages, who_sells='o'):
     i = random.randrange(0, 3)
     time.sleep(i)
     soup = BeautifulSoup(wb_data.text, 'lxml')
+#    print(soup)
     if soup.find('ul','pageLink'): #判断是否有分页标识代码 ： <ul class="pageLink clearfix">
         for link in soup.select('tr > td.t > a'):
             item_link = link.get('href')
@@ -70,6 +71,7 @@ def get_item_info_from(url,data=None):
         pass
     else:
         soup = BeautifulSoup(wb_data.text, 'lxml')
+        print(url)
         data = {
             'title':soup.title.text.strip(),
             'price':soup.select('div.price_li > span > i')[0].text.strip(),
