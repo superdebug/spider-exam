@@ -50,7 +50,7 @@ def get_links_from(channel, pages, who_sells='o'):
     i = random.randrange(0, 3)
     time.sleep(i)
     soup = BeautifulSoup(wb_data.text, 'lxml')
-    if soup.find('ul', 'pageLink'): #判断是否有分页标识代码 ： <ul class="pageLink clearfix">
+    if soup.find('ul','pageLink'): #判断是否有分页标识代码 ： <ul class="pageLink clearfix">
         for link in soup.select('tr > td.t > a'):
             item_link = link.get('href')
             url_list.insert_one({'url': item_link})
@@ -58,7 +58,7 @@ def get_links_from(channel, pages, who_sells='o'):
             # return urls
     else:
         # It's the last page !
-        print('pass')
+        print('-------------pass-----------------')
         pass
 #get_links_from('http://bj.ganji.com/ershoubijibendiannao/','3')
 
