@@ -19,10 +19,10 @@ if __name__ == '__main__':
     # pool = Pool()
 
     #步骤一 先执行下面的这个函数，用来爬取所有的链接 
-    #pool.map(get_all_links_from,channel_list.split())
+    pool.map(get_all_links_from,channel_list.split())
 
     #步骤二 后执行这个函数用来爬取所有详情页 
-    pool.map(get_item_info_from, rest_of_urls)
+    #pool.map(get_item_info_from, rest_of_urls)
 
     pool.close()
     pool.join()
