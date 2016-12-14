@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import scrapy
 from scrapy.http import Request
 
@@ -15,10 +18,15 @@ class QiantuSpider(scrapy.Spider):
         for i in range(0,len(urldata)):
             #print(urldata[i])
             thisurldata = urldata[i]
-            print(thisruldata)
-            yield Request(url=thisurldata,callback=self.next)
+            print(thisurldata)
+            yield Request(url=thisurldata,callback=self.next)  #callback的功能是指定回调函数
     def next(self,response):
         pagelist = response.xpath("//div[@id='showpage']/a/text()").extract()
-        print(pagelist)
+        #print(pagelist);
+        if (len(pagelist)>=2):
+            page=pagelist[-2]
+        else:
+            pass
+
 
         pass
