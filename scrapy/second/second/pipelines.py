@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-import urllib.request
+import requests
 # Define your item pipelines here
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting

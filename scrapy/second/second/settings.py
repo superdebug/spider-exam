@@ -35,12 +35,12 @@ USER_AGENT = [
 	"Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
         ]
 PROXIES = [
-	{'ip_port': '175.153.74.132:47825', 'user_pass': ''},
-	{'ip_port': '118.80.135.64:30040', 'user_pass': ''},
-	{'ip_port': '36.34.210.31:29249', 'user_pass': ''},
-	{'ip_port': '61.55.238.228:16949', 'user_pass': ''},
-	{'ip_port': '106.84.40.135:8998', 'user_pass': ''},
-	{'ip_port': '119.254.92.52:80', 'user_pass': ''},
+	{'ip_port': '114.39.152.84:8998', 'user_pass': ''},
+	{'ip_port': '58.114.181.179:8998', 'user_pass': ''},
+	{'ip_port': '114.232.163.127:8088', 'user_pass': ''},
+	{'ip_port': '218.204.74.99:8998', 'user_pass': ''},
+	{'ip_port': '125.120.206.214:808', 'user_pass': ''},
+	{'ip_port': '114.232.169.188:8088', 'user_pass': ''},
 ]
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False 
@@ -51,7 +51,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16

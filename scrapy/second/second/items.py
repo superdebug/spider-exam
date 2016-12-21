@@ -11,5 +11,6 @@ import scrapy
 class SecondItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     url = scrapy.Field()
     pass
