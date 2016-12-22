@@ -35,12 +35,12 @@ USER_AGENT = [
 	"Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52",
         ]
 PROXIES = [
-	{'ip_port': '114.39.152.84:8998', 'user_pass': ''},
-	{'ip_port': '58.114.181.179:8998', 'user_pass': ''},
-	{'ip_port': '114.232.163.127:8088', 'user_pass': ''},
-	{'ip_port': '218.204.74.99:8998', 'user_pass': ''},
-	{'ip_port': '125.120.206.214:808', 'user_pass': ''},
-	{'ip_port': '114.232.169.188:8088', 'user_pass': ''},
+	{'ip_port': '139.199.198.71:1080', 'user_pass': ''},
+	{'ip_port': '111.185.163.44:8888', 'user_pass': ''},
+	{'ip_port': '112.104.31.117:8088', 'user_pass': ''},
+	{'ip_port': '114.232.104.148:8088', 'user_pass': ''},
+	{'ip_port': '111.77.115.23:808', 'user_pass': ''},
+	{'ip_port': '117.86.92.199:8088', 'user_pass': ''},
 ]
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False 
