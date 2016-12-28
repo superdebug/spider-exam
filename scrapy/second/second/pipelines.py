@@ -21,7 +21,8 @@ class SecondPipeline(object):
             #使用正则表达式匹配图片地址
 	    pat='http://pic.qiantucdn.com/58pic/(.*?).jpg!qt'
             id=re.compile(pat).findall(thisurl)[0]
-	    thistrueurl = "http://pic.qiantucdn.com/58pic/"+id+"_1024.jpg" 
+	    thistrueurl = "http://pic.qiantucdn.com/58pic/"+id+"_1024.jpg"
+            print(thistrueurl)	 
             file="/python3-exam/rst2/"+id[-7:]+".jpg"  #设置图片文件存储路径 并将id的后7位作为文件名
             urllib.urlretrieve(thistrueurl,filename=file)	
         return item
