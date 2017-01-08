@@ -21,9 +21,11 @@ class TaobaoPipeline(object):
             print(link)
             print(price)
             print(comment)
-            sql="insert into taob(title,link,price,comment) values('"+title+"','"+link+"','"+price+"','"+comment+"')"
+            sql="insert into taob(title,link,price,comment) values('"+title+"','"+link+"','"+price+"','"+comment+"');"
+            print(sql)
             self.conn.query(sql)
-            self.conn.commit()
+            #cursor=self.conn.cursor;
+            #cursor.execute(sql)
             return item
         except Exception as err:
             print(err)     
