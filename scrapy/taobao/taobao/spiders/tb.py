@@ -34,7 +34,6 @@ class TbSpider(scrapy.Spider):
             thisid=allid[j]
             #构建需要爬取的商品详情页信息
             url1 = "https://item.taobao.com/item.htm?id="+str(thisid)
-            #print(url1)
             yield Request(url=url1,callback=self.next)
 
     #提取商品的详细信息
