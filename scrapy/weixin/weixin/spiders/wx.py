@@ -21,14 +21,17 @@ class WxSpider(scrapy.Spider):
     def page(self, response):
         print("在处理列表搜索页，得到文章地址")
         page_list = response.xpath("//div[@class='txt-box']/h3/a/@href").extract()
+        print(page_list)
+        print(len(page_list))
         for j in range(0,len(page_list)):
             # 构建列表页源码中的微信文章url链接地址
             print(page_list[j])
             page_url = page_list[j]
-            yield Request(url=page_url,callback=self.next2)
+            print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+            yield Request(url=page_url,callback=self.next,dont_filter=True)
 
-    def next2(self,response):
-        item = sWeixinItem()
+    def next(self,response):
+        item = WeixinItem()
         print("*********************************************")
         yield item
 
