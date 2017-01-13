@@ -35,6 +35,11 @@ class WxSpider(scrapy.Spider):
         print("*********************************************")
         item['title']=response.xpath("//title/text()").extract()
         item['link']= response.url
+        #item['content']= response.xpath("//div[@class='rich_media_content']/text()").extract()
+        #item['content'] = response.xpath('//*[contains(@class, "weui_media_desc")]/text()').extract()[0].strip()
+
+        #item['content'] = response.body
         print(item['link'])
         print(item['title'])
+        #print(item['content'])
         yield item

@@ -6,7 +6,22 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+import random
+from wx.settings import IPPOOL
+#导入官方代理IP的一个模块
+from scrapy.contrib.downloadermiddleware.httpproxy import HttpProxyMiddleware
 
+class IPPOOLS(HttpProxyMiddleware):
+    def __init__(self,ip=''):
+        self.ip=ip
+    def process_request(self, request, spider):
+        thisip=random.choice(IPPOOL)
+        print("当前使用的ip是:"+thisip["ipaddr"])
+        try:
+            request.meta["proxy"]="http://"+thisip["ipaddr"]
+        except Exception as e:
+            print(e)
+            pass
 
 class WxSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,

@@ -25,7 +25,7 @@ PROXIES = [
 ]
 
 '''
-r = requests.get('http://10.1.101.200:8000/?types=0')
+r = requests.get('http://10.1.101.202:8000/?types=0')
 ip_ports = json.loads(r.text)
 PROXIES=[]
 #将代理ip转换成scrapy的settings.py可以识别的配置信息

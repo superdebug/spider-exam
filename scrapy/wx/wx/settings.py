@@ -16,13 +16,13 @@ NEWSPIDER_MODULE = 'wx.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'wx (+http://www.yourdomain.com)'
-
-# Obey robots.txt rules
-ROBOTSTXT_OBEY = False
-
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.75 Safari/537.36 115Browser/7.2.3'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
+ROBOTSTXT_OBEY = False
+
+
+
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
@@ -33,7 +33,7 @@ DOWNLOAD_DELAY = 2
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -52,9 +52,12 @@ DOWNLOAD_DELAY = 2
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'wx.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    #'wx.middlewares.MyCustomDownloaderMiddleware': 543,
+    #来自middlewares.py的引用 ，123为输出的序号
+    'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware':123,
+    'wx.middlewares.IPPOOLS':125,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -67,6 +70,13 @@ DOWNLOAD_DELAY = 2
 ITEM_PIPELINES = {
     'wx.pipelines.WxPipeline': 300,
 }
+
+IPPOOL=[
+    {"ipaddr":"10.1.101.165:8888"},
+    #{"ipaddr":"47.90.74.111:8088"},
+    #{"ipaddr":"120.52.73.98:8080"},
+    #{"ipaddr":"124.88.67.34:843"},
+]
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

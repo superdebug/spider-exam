@@ -14,4 +14,5 @@ class WeixinItem(scrapy.Item):
     title=scrapy.Field()
     link = scrapy.Field()
     describe = scrapy.Field()
+    content = scrapy.Field()
     pass

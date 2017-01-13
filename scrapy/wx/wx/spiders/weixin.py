@@ -5,7 +5,7 @@ from wx.items import WxItem
 class WeixinSpider(scrapy.Spider):
     name = "weixin"
     allowed_domains = ["sogou.com"]
-    start_urls = ['http://weixin.sogou.com/']
+    start_urls = ['http://www.sogou.com/']
 
     def parse(self, response):
         #设置关键词
@@ -26,5 +26,4 @@ class WeixinSpider(scrapy.Spider):
         #描述信息样式 <p class="txt-info" id="sogou_vr_11002601_summary_0">来源:思诚之道链接
         item['describe'] = response.xpath("//p[@class='txt-info']/text()").extract()
         print(len(item['link']))
-
         yield item
