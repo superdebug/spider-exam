@@ -8,4 +8,10 @@
 
 class HuanqiuPipeline(object):
     def process_item(self, item, spider):
+        title = item['title'][0]
+        url = item['url']
+        content=item['content'][0]
+        print(title)
+        print(content)
+        print(url)
         return item

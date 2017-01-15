@@ -25,9 +25,11 @@ class YuleSpider(scrapy.Spider):
     def page(self,response):
         item=HuanqiuItem()
         item['title']=response.xpath('//title/text()').extract()
-        print(item['title'])
+        #print(item['title'])
         item['url']=response.url
         #item['content']=response.xpath("//div[@class='conText']").extract()
         item['content']=response.xpath("//div[@class='text']").extract()
-        print(item['content'])
-        print('********************************************************************')
+        #print(item['content'])
+        #print('********************************************************************')
+        #print(item['url'])
+        return item
