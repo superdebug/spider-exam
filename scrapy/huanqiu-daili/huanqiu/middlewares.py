@@ -8,6 +8,8 @@
 from scrapy import signals
 import base64
 import random
+import requests
+import json
 class RandomUserAgent(object):
     def __init__(self, agents):
         self.agents = agents
@@ -23,15 +25,19 @@ class RandomUserAgent(object):
 
 class ProxyMiddleware(object):
     def process_request(self, request, spider):
-        request.meta['proxy'] = "http://"+"111.56.32.83:80"
+        r = requests.get('http://10.1.101.202:8000/?types=0&count=15&country=中国')
+        ip_ports = json.loads(r.text)        
+        i=random.randint(0,len(ip_ports)-1)
+        ip = str(ip_ports[i][0])+':'+str(ip_ports[i][1])
+        request.meta['proxy'] = 'http://'+ip 
         print('当前使用的代理ip是:'+request.meta['proxy'])
         #request.meta["proxy"]="http://"+thisip["ipaddr"]
         # Use the following lines if your proxy requires authentication
-        proxy_user_pass = "USERNAME:PASSWORD"
+        #proxy_user_pass = "USERNAME:PASSWORD"
         # setup basic authentication for the proxy
         #encoded_user_pass = base64.encodestring(proxy_user_pass)
         #request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass
-        request.headers['Proxy-Authorization'] = 'Basic ' 
+        request.headers['Proxy-Authorization'] = 'Basic '
 
 class HuanqiuSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
