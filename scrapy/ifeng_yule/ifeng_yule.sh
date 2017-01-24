@@ -1,5 +1,9 @@
 #!/bin/sh 
-. ~/.bash_profile
+#适合CentOS
+#. ~/.bash_profile 
+
+#适合ubunut
+. ~/.bashrc  
 #export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 cd /opt/spider-exam/scrapy/ifeng_yule
 /usr/local/bin/scrapy crawl yule --nolog

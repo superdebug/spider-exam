@@ -6,7 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import pymysql
 import re
-
+    
 class IfengYulePipeline(object):
     def __init__(self):
         self.conn=pymysql.connect(host="127.0.0.1",user="root",passwd="123456",db="spiderdb",charset="utf8")
@@ -18,11 +18,14 @@ class IfengYulePipeline(object):
             url = item['url']
             content=item['content'][0]
             keywords = title
+            catalog = '娱乐'
             print(title)
             print(content)
             print(url)
             print('*******************************************************')
-            sql="insert into news(title,url,content) values('"+title+"','"+url+"','"+content+"')"
+            #sql="insert into news(title,url,content,catalog) values('"+title+"','"+url+"','"+content+"')"
+            sql="insert into news(title,url,catalog,content) values('"+title+"','"+url+"','"+catalog+"','"+content+"')"
+            print (sql)
             self.conn.query(sql)
             self.conn.commit()
             return item
