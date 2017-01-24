@@ -1,0 +1,7 @@
+凤凰娱乐-明星
+http://ent.ifeng.com/listpage/3/1/list.shtml
+
+计划任务
+#每10分钟抓取一次凤凰娱乐
+*/10 * * * *  /opt/spider-exam/scrapy/ifeng_yule/ifeng_yule.sh
+
