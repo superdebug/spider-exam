@@ -46,6 +46,10 @@ for line in lines:
 
 cursor.execute(sql)
 conn.close()
+
+#比较并插入表sp_term_relationships数据 未完成
+#select id from sp_posts where id not in (select tid from sp_term_relationships);
+
 #删除压缩文件及sql文本文件
 os.remove(zip_file)
 os.remove(unzip_file)
