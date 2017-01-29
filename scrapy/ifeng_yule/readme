@@ -16,3 +16,6 @@ select title,catalog,create_time from news where catalog='娱乐';
 远程
 /alidata/receive/d1000/
 
+#待完善
+#将正文替换字符串由爬取过程替换空串，同时修改标题去除特性
+#在生成sql语句时进行网站个性替换
