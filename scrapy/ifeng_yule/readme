@@ -5,6 +5,9 @@ http://ent.ifeng.com/listpage/3/1/list.shtml
 #每10分钟抓取一次凤凰娱乐
 */10 * * * *  /opt/spider-exam/scrapy/ifeng_yule/ifeng_yule.sh
 
+删除系统邮件
+/var/spool/mail
+echo '' >root
 
 select title,catalog,create_time from news where catalog='娱乐';
 
