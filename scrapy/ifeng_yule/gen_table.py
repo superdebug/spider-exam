@@ -113,6 +113,8 @@ for i in range(len(row)):
         file_log.writelines('数据写入本地表tb_d1000失败---'+err+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
 #关闭日志文件
 file_log.close()
+file_object.close()
 
 #删除生成的sql文件及zip文件
-file_object.close()
+os.remove('d1000_sp_posts.sql')
+#os.remove('d1000_sp_posts.zip')
