@@ -4,10 +4,8 @@ import pymysql
 import datetime
 import os
 import sys
-#import zipfile
+import zipfile
 import paramiko
-import gzip
-
 
 #程序目录
 BASE_PATH = '/opt/spider-exam/scrapy/ifeng_yule/'
@@ -26,12 +24,13 @@ file_log = open(LOG_PATH_FILE, 'a')
 os.chdir(BASE_PATH)
 
 #检查是否可以访问目标网站
-
+'''
 return1=os.system('ping www.d1000.net -c 2')
 if return1:
     print ('ping fail')
     file_log.writelines('连接网络失败---'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n') 
     sys.exit(0)
+'''
 file_log.writelines('连接网络成功---'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
 
 #数据库连接配置
@@ -71,12 +70,9 @@ print('数据生成完毕!')
 file_log.writelines('数据生成完毕---'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
 
 #压缩sql文件为zip格式
-
-f_in = open(SQL_FILE,'rb')
-f_out = gzip.open('d1000_sp_posts.sql.gz','wb')
-f_out.writelines(f_in)
-f_out.close()
-f_in.close()
+zip_file =zipfile.ZipFile('d1000_sp_posts.zip','w',zipfile.ZIP_DEFLATED)
+zip_file.write(SQL_FILE)
+zip_file.close;
 file_log.writelines('压缩数据完成---'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
 
 #复制压缩sql的zip文件到服务器端
@@ -84,9 +80,9 @@ rhost = '10.1.101.202'#主机
 rport = 22 #端口
 rusername = 'yc' #用户名
 rpassword = '123456' #密码
-local_file = '/opt/spider-exam/scrapy/ifeng_yule/d1000_sp_posts.sql.gz'#本地文件或目录
+local_file = '/opt/spider-exam/scrapy/ifeng_yule/d1000_sp_posts.zip'#本地文件或目录
 remote_path = '/alidata/receive/d1000/' #远程文件或目录
-remote_file = 'd1000_sp_posts.sql.gz' #远程文件或目录
+remote_file = 'd1000_sp_posts.zip' #远程文件或目录
 sf = paramiko.Transport((rhost,rport))
 sf.connect(username=rusername,password=rpassword)
 sftp = paramiko.SFTPClient.from_transport(sf)
@@ -115,11 +111,10 @@ for i in range(len(row)):
         print('错误信息如下')
         print(err)
         file_log.writelines('数据写入本地表tb_d1000失败---'+err+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
-
 #关闭日志文件
 file_log.close()
 file_object.close()
 
 #删除生成的sql文件及zip文件
 os.remove('d1000_sp_posts.sql')
-os.remove('d1000_sp_posts.sql.gz')
+os.remove('d1000_sp_posts.zip')
