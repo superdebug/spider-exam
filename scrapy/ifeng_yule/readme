@@ -7,3 +7,12 @@ http://ent.ifeng.com/listpage/3/1/list.shtml
 
 
 select title,catalog,create_time from news where catalog='娱乐';
+
+目录结构
+本地
+/opt/spider-exam/scrapy/ifeng_yule/
+/opt/log/
+
+远程
+/alidata/receive/d1000/
+
