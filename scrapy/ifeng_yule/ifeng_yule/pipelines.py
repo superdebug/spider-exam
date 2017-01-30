@@ -14,7 +14,8 @@ class IfengYulePipeline(object):
     def process_item(self, item, spider):
         try:
             title_1 = item['title'][0]
-            title =title_1.replace('娱乐频道_凤凰网',"D1000娱乐网") 
+            #title =title_1.replace('娱乐频道_凤凰网',"D1000娱乐网") 
+            title =title_1.replace('娱乐频道_凤凰网',"") 
             url = item['url']
             content=item['content'][0]
             keywords = title
