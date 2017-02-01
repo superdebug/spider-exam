@@ -17,6 +17,9 @@ class IfengYulePipeline(object):
             #title =title_1.replace('娱乐频道_凤凰网',"D1000娱乐网") 
             title =title_1.replace('娱乐频道_凤凰网',"") 
             url = item['url']
+            #去掉原网站logo及链接
+            content=item['content'][0].replace('<span class="ifengLogo"><a href="http://www.ifeng.com/" target="_blank"><
+img src="http://p2.ifengimg.com/a/2016/0810/204c433878d5cf9size1_w16_h16.png"></a></span>','')
             content=item['content'][0]
             keywords = title
             catalog = '娱乐'

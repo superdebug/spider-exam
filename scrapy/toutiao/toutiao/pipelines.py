@@ -14,12 +14,11 @@ class ToutiaoPipeline(object):
         try:
             title = item['title']
             #title =title_1.replace('娱乐频道_凤凰网',"D1000娱乐网") 
-            #title =title_1.replace('娱乐频道_凤凰网',"")
             url = item['url']
             content=item['content']
             keywords = title
             catalog = '待整理'
-            image_url = item['image_url']
+            image_url = item['image_url'] #原图片地址完整格式
             print(title)
             print(content)
             print(url)
