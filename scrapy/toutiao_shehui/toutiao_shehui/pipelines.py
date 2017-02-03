@@ -8,4 +8,7 @@
 
 class ToutiaoShehuiPipeline(object):
     def process_item(self, item, spider):
+        #print(item['image_url'][0]) #不能调用标题图片，否则会少新闻
+        print(item['title'])
+        print(item['url'])
         return item
