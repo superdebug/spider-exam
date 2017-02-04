@@ -19,12 +19,13 @@ class ToutiaoPipeline(object):
             keywords = title
             catalog = '待整理'
             image_url = item['image_url'] #原图片地址完整格式
+            sp_name='toutiao头条热点'
             print(title)
             print(content)
             print(url)
             
             print('*******************************************************')
-            sql="insert into news(title,url,catalog,image_url,content) values('"+title+"','"+url+"','"+catalog+"','"+image_url+"','"+content+"')"
+            sql="insert into news(title,url,catalog,image_url,content,sp_name) values('"+title+"','"+url+"','"+catalog+"','"+image_url+"','"+content+"','"+sp_name+"')"
             print (sql)
             self.conn.query(sql)
             self.conn.commit()

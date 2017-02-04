@@ -15,5 +15,6 @@ class ToutiaoShehuiItem(scrapy.Item):
     url = scrapy.Field()
     image_url = scrapy.Field()
     describe = scrapy.Field()
+    catalog = scrapy.Field()
     content = scrapy.Field()
     pass

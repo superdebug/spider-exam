@@ -21,12 +21,14 @@ class IfengDianyingPipeline(object):
             content=item['content'][0]
             keywords = title
             catalog = '电影'
+            sp_name = 'ifeng_dianying凤凰电影'
             print(title)
-            print(content)
-            print(url)
+            #print(content)
+            #print(url)
             print('*******************************************************')
             #sql="insert into news(title,url,content,catalog) values('"+title+"','"+url+"','"+content+"')"
-            sql="insert into news(title,url,catalog,content) values('"+title+"','"+url+"','"+catalog+"','"+content+"')"
+            #sql="insert into news(title,url,catalog,content) values('"+title+"','"+url+"','"+catalog+"','"+content+"')"
+            sql="insert into news(title,url,catalog,content,sp_name) values('"+title+"','"+url+"','"+catalog+"','"+content+"','"+sp_name+"')"
             print (sql)
             self.conn.query(sql)
             self.conn.commit()

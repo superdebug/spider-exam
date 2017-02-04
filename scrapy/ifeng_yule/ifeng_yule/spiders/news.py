@@ -3,15 +3,26 @@ import scrapy
 from scrapy.http import Request
 import urllib.request
 from ifeng_yule.items import IfengYuleItem 
+import datetime
+
+#日志路径
+LOG_PATH='/opt/log/spider_log/'
+#日志文件
+LOG_FILE = 'ifeng_news.log'
+
+#定义日志文件信息并以追加模式记录日志
+LOG_PATH_FILE= LOG_PATH+LOG_FILE
+file_log = open(LOG_PATH_FILE, 'a')
 
 
-class YuleSpider(scrapy.Spider):
-    name = "yule"
+#抓取凤凰网新闻栏目，作为国内新闻
+class NewsSpider(scrapy.Spider):
+    name = "news"
     allowed_domains = ["ent.ifeng.com"]
-    start_urls = ['http://ent.ifeng.com/']
+    start_urls = ['http://news.ifeng.com/mainland/']
 
     def parse(self, response):
-        listpage='http://ent.ifeng.com/listpage/3/1/list.shtml'
+        listpage='http://news.ifeng.com/mainland/'
         yield Request(url=listpage,callback=self.next)
 
     def next(self,response):
@@ -26,6 +37,7 @@ class YuleSpider(scrapy.Spider):
         item=IfengYuleItem()
         item['title']=response.xpath('//title/text()').extract()
         item['url']=response.url
-        item['catalog']='娱乐'
+        item['catalog']='国内'
         item['content']=response.xpath("//div[@class='js_selection_area']").extract()
+        file_log.writelines('爬取文章标题--'+item['title'][0]+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
         yield item

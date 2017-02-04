@@ -1,4 +1,9 @@
 需要完善今日头条-社会栏目
 网站微博url页面抓去方法-服务器端实现
 
+在头条pipelines中加入强制删除phantomjs 的缓存的命令
+import shutil  
+shutil.rmtree('要清空的文件夹名')  
+os.mkdir('要清空的文件夹名') 
+适合CentOS,回家测试ubuntu系统时候通用
 

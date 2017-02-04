@@ -14,5 +14,6 @@ class IfengYuleItem(scrapy.Item):
     title = scrapy.Field()
     url = scrapy.Field()
     describe = scrapy.Field()
+    catalog = scrapy.Field()
     content = scrapy.Field()
     pass

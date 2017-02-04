@@ -5,18 +5,21 @@ from selenium import webdriver
 import time
 from lxml import etree
 from toutiao_shehui.items import ToutiaoShehuiItem
+import datetime
+import shutil
+
 class ShehuiSpider(scrapy.Spider):
     name = "shehui"
     allowed_domains = ["www.toutiao.com"]
     start_urls = ['http://www.toutiao.com/']
     def parse(self, response):
+        shutil.rmtree('/root/.local/share/') #每一次启动phantomjs之前都要删除其缓存
         driver = webdriver.PhantomJS(executable_path='/usr/local/bin/phantomjs')
         #executable_path为你的phantomjs可执行文件路径
-        #打开头条军事频道
+        #打开头条'社会'频道
         driver.get("http://www.toutiao.com/news_society/")
         data = driver.page_source
         driver.quit
-        
         #将获取的页面结果传递给变量并用xpaht解析
         selector = etree.HTML(data)
         #在栏目首页获取当前页面新闻页id
@@ -34,17 +37,18 @@ class ShehuiSpider(scrapy.Spider):
                 #构造完整的url地址
                 #urls.append('http://www.toutiao.com'+link)
                 this_url=('http://www.toutiao.com'+links[i])
-                #print(this_url)
+                print(this_url)
                 yield Request(url=this_url,callback=self.next)
 
     def next(self,response):
         item = ToutiaoShehuiItem()
         title = response.xpath("//h1[@class='article-title']/text()").extract()
-        image_urls=response.xpath("//div[@class='article-content']/img/@src").extract() #如果使用会导致新闻数量减少
+        #image_urls=response.xpath("//div[@class='article-content']/img/@src").extract() #如果使用会导致新闻数量减少
         content = response.xpath("//div[@class='article-content']").extract()
         item['title']=title[0]
-        item['content']=content[0]
+        item['content']=content
         item['url'] =response.url
-        item['image_url']=image_urls  #如果使用会这个字段会导致缺少爬取内容
+        item['catalog'] ='国内'
+        ##item['image_url']=image_urls  #如果使用会这个字段会导致缺少爬取内容
+        #print(title[0])
         yield item        
-
