@@ -39,6 +39,4 @@ class ToutiaoShehuiPipeline(object):
             print(str(err))
             file_log.writelines('入库失败--'+str(err)+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             pass
-        
-        file_log.close()
         return item

@@ -6,6 +6,14 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import pymysql
 import re
+import datetime
+#日志路径
+LOG_PATH='/opt/log/spider_log/'
+#日志文件
+LOG_FILE = 'ifeng_dianying.log'
+#定义日志文件信息并以追加模式记录日志
+LOG_PATH_FILE= LOG_PATH+LOG_FILE
+file_log = open(LOG_PATH_FILE, 'a')
 
 
 class IfengDianyingPipeline(object):
@@ -20,7 +28,7 @@ class IfengDianyingPipeline(object):
             url = item['url']
             content=item['content'][0]
             keywords = title
-            catalog = '电影'
+            catalog = '娱乐'
             sp_name = 'ifeng_dianying凤凰电影'
             print(title)
             #print(content)
@@ -32,8 +40,12 @@ class IfengDianyingPipeline(object):
             print (sql)
             self.conn.query(sql)
             self.conn.commit()
+            file_log.writelines('开始爬取今日头条-社会栏目--'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
+            file_log.writelines('文章标题--'+title+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
+            file_log.writelines('文章地址--'+url+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             return item
         except Exception as err:
             print(err)
+            file_log.writelines('数据插入错误--'+str(err)+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             pass
         return item

@@ -6,6 +6,15 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import pymysql
 import re
+import datetime
+
+#日志路径
+LOG_PATH='/opt/log/spider_log/'
+#日志文件
+LOG_FILE = 'ifeng_yule.log'
+#定义日志文件信息并以追加模式记录日志
+LOG_PATH_FILE= LOG_PATH+LOG_FILE
+file_log = open(LOG_PATH_FILE, 'a')
     
 class IfengYulePipeline(object):
     def __init__(self):
@@ -25,17 +34,19 @@ class IfengYulePipeline(object):
             sp_name = 'ifeng_yule凤凰娱乐' 
             #catalog = '娱乐'
             print(title)
-            print(content)
-            print(url)
+            file_log.writelines('开始爬取凤凰网-娱乐栏目--'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
+            file_log.writelines('文章标题--'+title+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
+            file_log.writelines('文章地址--'+url+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
+            #print(url)
             print('*******************************************************')
-            #sql="insert into news(title,url,content,catalog) values('"+title+"','"+url+"','"+content+"')"
-            #sql="insert into news(title,url,catalog,content) values('"+title+"','"+url+"','"+catalog+"','"+content+"')"
             sql="insert into news(title,url,catalog,content,sp_name) values('"+title+"','"+url+"','"+catalog+"','"+content+"','"+sp_name+"')"
             print (sql)
             self.conn.query(sql)
             self.conn.commit()
             return item
         except Exception as err:
-            print(err)     
+            #print(err)    
+            file_log.writelines('数据插入错误--'+str(err)+'--'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n') 
             pass
+#        file_log.close()
         return item
