@@ -40,7 +40,7 @@ class IfengYulePipeline(object):
             #print(url)
             print('*******************************************************')
             sql="insert into news(title,url,catalog,content,sp_name) values('"+title+"','"+url+"','"+catalog+"','"+content+"','"+sp_name+"')"
-            print (sql)
+            #print (sql)
             self.conn.query(sql)
             self.conn.commit()
             return item

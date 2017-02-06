@@ -7,6 +7,7 @@ from lxml import etree
 from toutiao_shehui.items import ToutiaoShehuiItem
 import datetime
 import shutil
+import os
 
 class ShehuiSpider(scrapy.Spider):
     name = "shehui"
@@ -14,6 +15,7 @@ class ShehuiSpider(scrapy.Spider):
     start_urls = ['http://www.toutiao.com/']
     def parse(self, response):
         shutil.rmtree('/root/.local/share/') #每一次启动phantomjs之前都要删除其缓存
+        os.mkdir('/root/.local/share/')
         driver = webdriver.PhantomJS(executable_path='/usr/local/bin/phantomjs')
         #executable_path为你的phantomjs可执行文件路径
         #打开头条'社会'频道
@@ -30,7 +32,7 @@ class ShehuiSpider(scrapy.Spider):
         #urls=[]
         #for link in links:
         for i in range(0,len(links)+2):
-            if links[0].find('/group/')==-1:
+            if links[i].find('/group/')==-1:
                 x=9 
                 #pass
             else:
