@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui">
+<!--页面title-->
+<!--  -->
+<meta name="filetype" content="0">
+<meta name="publishedtype" content="1">
+<meta name="pagetype" content="1">
+<meta name="catalogs" content="L_3541092">
+<meta name="contentid" content="L_30698482">
+<meta name="publishdate" content="2017-02-03">
+<meta name="author" content="L_204066">
+<meta name="source" content="来源：海外网手机网">
+<title>城管上街撕春联 称有安全隐患</title>
+<!--此处须直接引用头条css-->
+<link href="http://s2.pstatp.com/inapp/gallery/style/default.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="gallery">
+    <!--此处可以改背景色,背景图片,logo图片-->
+    <div id="TouTiaoBar" style="background-color: #fff">
+        <a href="http://m.haiwainet.cn/" id="logo" class="logo">
+            <img src="/images/logo212X60.png">
+        </a>
+    </div>
+
+    <!--header 部分样式须严格遵守-->
+    <header>
+        <h1>城管上街撕春联 称有安全隐患</h1>
+        <div class="subtitle">
+          <a id="source" target="_blank" href="#">齐鲁网</a>
+          <time>02-03 17:41</time>
+          <a id="toggle_img" onclick="TouTiao.showImage(); return false" href="#" style="display: none;">显示图片</a>
+        </div>
+    </header>
+
+    <!--figcaption为图片描述，控制在200字以内-->
+    <!--img标签width和height属性须事先给出，由于懒加载的需要，必须把"src"改写为"alt-src" -->
+    <figure>
+      <figcaption>日前，据中国山东网济宁1月31日讯，春节过后，济宁市城市管理执法支队六大队对辖区道路车站东路、南文昌阁街开展了春联“福”字专项整治活动。城管认为春联在带来喜庆的同时，也带来了很大的安全隐患和视觉污染。节日过后，破旧凌乱的春联福字不但失去了营造节日气氛的作用，还严重影响了城市的市容市貌。但是这一举措，让在节日期间的民众难以理解，网民质疑贴春联这一延续了几千年的习俗被城管粗暴的制止，是不是城管管理的太多了？（图为整治前的商家店面）</figcaption>
+        <img alt-src="http://mpic.haiwainet.cn/thumb/d/uploadfile/2017/0203/20170203052128603,w_600.jpg" alt-src2='http://images.haiwainet.cn/2017/0203/20170203052128603.jpg'>
+    </figure>
+    <figure>
+      <figcaption>小编先普及下春联的缘由。春联俗称“门对”、“春贴”、“对联”、“对子”，雅称“楹联”。中华传统民俗文化。喜庆的大红春联是对联的一种，在春节时张贴，故名春联。春联的来源其一是桃符。最初人们用以避邪，画门神像木刻成人形挂在门旁桃木上，再简化为在桃木板上题写门神名字。春联的另一来源是春贴，古人在立春日多贴“宜春”二字，后渐渐发展为春联，表达了中国劳动人民一种辟邪除灾、迎祥纳福的美好愿望。但是，济宁城管开展春联“福”字专项整治活动似乎要打破这种民俗，来看看城管整理的场景。</figcaption>
+        <img alt-src="http://mpic.haiwainet.cn/thumb/d/uploadfile/2017/0203/20170203052128483,w_600.jpeg" alt-src2='http://images.haiwainet.cn/2017/0203/20170203052128483.jpeg'>
+    </figure>
+    <figure>
+      <figcaption>城管的这一行动是不是得到了群众的理解呢？看看声远的评论就知道了。网友@bzxegg：这不是让店家们一年心里隔应？哪个商铺不想搞个好彩头？在新年里招财进宝，城管连这都能管着，真是权力巨大啊。网友@智博威：还能再变态点啵？（图为整治后的商家店面）</figcaption>
+        <img alt-src="http://mpic.haiwainet.cn/thumb/d/uploadfile/2017/0203/20170203052128849,w_600.jpg" alt-src2='http://images.haiwainet.cn/2017/0203/20170203052128849.jpg'>
+    </figure>
+    <figure>
+      <figcaption>图为整治前的商家店面。</figcaption>
+        <img alt-src="http://mpic.haiwainet.cn/thumb/d/uploadfile/2017/0203/20170203052128956,w_600.jpg" alt-src2='http://images.haiwainet.cn/2017/0203/20170203052128956.jpg'>
+    </figure>
+    <figure>
+      <figcaption>图为济宁城管整理商铺。</figcaption>
+        <img alt-src="http://mpic.haiwainet.cn/thumb/d/uploadfile/2017/0203/20170203052128522,w_600.jpg" alt-src2='http://images.haiwainet.cn/2017/0203/20170203052128522.jpg'>
+    </figure>
+</div>
+<!--此处须直接引用头条JS-->
+<script src='http://s2.pstatp.com/inapp/gallery/gallery.min.js'></script>
+<!--如需统计翻页，在此注册事件即可，如果不需要，请删掉此段代码-->
+<script type="text/javascript">
+var TTGalleryEvents = {
+  afterChange : function(){
+    var index = this.getCurrentIndex(),
+        currItemSrc = this.currItem.src;
+    console.log(index,currItemSrc);
+    //_gaq.push(['_trackEvent', category, action, opt_label, opt_value]); 你的Google 统计代码
+    //_hmt.push(['_trackEvent', category, action, opt_label, opt_value]); 你的百度统计代码
+  }
+}
+</script>
+<script type="text/javascript" src="/js/tongji.js"></script>
+</body>
+</html>
