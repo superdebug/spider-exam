@@ -11,7 +11,7 @@ import datetime
 #日志路径
 LOG_PATH='/opt/log/spider_log/'
 #日志文件
-LOG_FILE = 'jgdqedu_旅游.log'
+LOG_FILE = 'jgdqedu_体育.log'
 #定义日志文件信息并以追加模式记录日志
 LOG_PATH_FILE= LOG_PATH+LOG_FILE
 file_log = open(LOG_PATH_FILE, 'a')
@@ -27,10 +27,10 @@ class JgdqeduPipeline(object):
             content=item['content'][0]
             keywords = title
             catalog = item['catalog']
-            sp_name = 'jgdqedu旅游'
+            sp_name = 'jgdqedu体育'
             desc_text = title
             print(title) 
-            file_log.writelines('开始爬取凤凰网-娱乐栏目--'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
+            file_log.writelines('开始爬取jgdqedu网-体育栏目--'+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             file_log.writelines('文章标题--'+title+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             file_log.writelines('文章地址--'+url+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             print('*******************************************************')

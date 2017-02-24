@@ -1,3 +1,3 @@
 爬取http://www.jgdqedu.cn/
-爬取旅游栏目
+爬取'旅游'栏目
 
