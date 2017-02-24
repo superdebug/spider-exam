@@ -26,6 +26,12 @@ class ToutiaoYulePipeline(object):
             url = item['url']
             print(url)
             content=item['content'][0]
+            content=content.replace('本文为头条号作者发布，不代表今日头条立场。','') #替换代码无效？？？
+            content=content.replace('204c433878d5cf9size1_w16_h16.png','')
+            content=content.replace('本文为立方娱乐团队原创，未经授权禁止转载，版权沟通微信：fjoy0726','')
+            content=content.replace('本文为头条号作者原创，未经授权，不得转载','')
+            #content=content.replace('','')
+          	
             keywords = title
             catalog = item['catalog']
             sp_name ='toutiao_shehui头条-娱乐'
