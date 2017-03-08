@@ -34,7 +34,7 @@ class JgdqeduPipeline(object):
             file_log.writelines('文章标题--'+title+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             file_log.writelines('文章地址--'+url+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")+'\n')
             print('*******************************************************')
-            sql="insert into news(title,url,desc_text,catalog,content,sp_name) values('"+title+"','"+url+"','"+desc_text+"','"+catalog+"','"+content+"','"+sp_name+"')"
+            sql="insert into news_2(title,url,desc_text,catalog,content,sp_name) values('"+title+"','"+url+"','"+desc_text+"','"+catalog+"','"+content+"','"+sp_name+"')"
             self.conn.query(sql)
             self.conn.commit()
             return item
