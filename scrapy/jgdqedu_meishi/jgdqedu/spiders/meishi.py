@@ -24,7 +24,7 @@ class MeishiSpider(scrapy.Spider):
         ini_list=config.get("jgdqedu","list_page")
         list_page =response.xpath(ini_list).extract()
 
-        for i in range(0,len(list_page)):
+        for i in range(0,len(list_page)-10):
             thisurl=('http://www.jgdqedu.cn'+list_page[i])
             #print(thisurl)
             yield Request(url=thisurl,callback=self.page)

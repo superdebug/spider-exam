@@ -16,6 +16,11 @@ LOG_FILE = 'jgdqedu_旅游.log'
 LOG_PATH_FILE= LOG_PATH+LOG_FILE
 file_log = open(LOG_PATH_FILE, 'a')
 
+#读取同义词库文件
+tongyici_file=r"/opt/seo/synonym/mySeoWord.txt"
+with open(tongyici_file, "rt") as handle:
+    tongyici_data = [ln.replace('\n','').split(',') for ln in handle]
+
 class JgdqeduPipeline(object):
     def __init__(self):
         self.conn=pymysql.connect(host="127.0.0.1",user="root",passwd="123456",db="spiderdb",charset="utf8")
@@ -23,8 +28,12 @@ class JgdqeduPipeline(object):
     def process_item(self, item, spider):
         try:
             title = item['title'][0]
+            for i in range(0,len(tongyici_data)): #对标题进行同义词替换
+                title = title.replace(tongyici_data[i][0],tongyici_data[i][1])
             url = item['url']
             content=item['content'][0]
+            for i in range(0,len(tongyici_data)): #对正文进行同义词替换
+                content = content.replace(tongyici_data[i][0],tongyici_data[i][1])
             keywords = title
             catalog = item['catalog']
             sp_name = 'jgdqedu旅游'

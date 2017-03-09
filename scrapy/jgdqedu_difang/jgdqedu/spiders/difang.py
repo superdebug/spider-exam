@@ -7,6 +7,7 @@ import  configparser
 config =  configparser.ConfigParser()
 config.read('/opt/spider-exam/scrapy/jgdqedu/config.ini')
 
+
 class DifangSpider(scrapy.Spider):
     name = "difang"
     allowed_domains = ["jgdqedu.cn"]
@@ -22,8 +23,8 @@ class DifangSpider(scrapy.Spider):
         #list_page = response.xpath("//div[@class='item-top']/h2/a/@href").extract()
         ini_list=config.get("jgdqedu","list_page")
         list_page =response.xpath(ini_list).extract()
-        #for i in range(0,len(list_page)-18):
-        for i in range(0,len(list_page)):
+        for i in range(0,len(list_page)-12):
+        #for i in range(0,len(list_page)):
             thisurl=('http://jgdqedu.cn'+list_page[i])
             #print(thisurl)
             yield Request(url=thisurl,callback=self.page)

@@ -23,7 +23,7 @@ class TansuoSpider(scrapy.Spider):
         #list_page = response.xpath("//div[@class='list-text']/ul/li/a/@href").extract()
         ini_list=config.get("jgdqedu","list_page")
         list_page =response.xpath(ini_list).extract()
-        for i in range(0,len(list_page)):
+        for i in range(0,len(list_page)-10):
             thisurl=('http://jgdqedu.cn'+list_page[i])
             #print(thisurl)
             yield Request(url=thisurl,callback=self.page)
